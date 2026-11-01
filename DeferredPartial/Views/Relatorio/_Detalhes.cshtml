@@ -1,0 +1,16 @@
+﻿
+@model DeferredPartial.MVC.Controllers.RelatorioViewModel
+
+<div id="detalhes">
+    <h2>Detalhes do relatório</h2>
+
+    <p>Valor: @Model.Total</p>
+</div>
+
+<script src="/Scripts/meu-plugin.js"></script>
+
+<script>
+    console.log("Detalhes inicializados!");
+
+    $("#detalhes").meuPlugin();
+</script>

@@ -1,0 +1,46 @@
+﻿@model DeferredPartial.MVC.Controllers.RelatorioViewModel
+@using DeferredPartial.MVC.Extensions;
+
+<h1>@Model.Nome</h1>
+
+<p>Total: @Model.Total</p>
+
+<div>
+    @Html.RenderDeferredPartial("_Detalhes", Model)
+</div>
+
+@section scripts{
+    <script>
+
+        document.addEventListener(
+            "deferredPartialLoaded",
+            function (event) {
+                var partial = event.detail.element;
+
+                console.log(
+                    "Carregamento concluído:",
+                    partial
+                );
+
+                if (event.detail.errors.length > 0) {
+                    console.warn(
+                        "Alguns scripts apresentaram erros:",
+                        event.detail.errors
+                    );
+                }
+            }
+        );
+
+        document.addEventListener(
+            "deferredPartialError",
+            function (event) {
+                console.error(
+                    "Erro ao carregar Partial:",
+                    event.detail.error
+                );
+            }
+        );
+
+    </script>
+
+}
